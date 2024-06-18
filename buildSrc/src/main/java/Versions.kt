@@ -52,6 +52,10 @@ object Versions {
         const val ANDROID = "1.7.3"
     }
 
+    object Room {
+        const val ROOM = "2.2.6"
+    }
+
     object Hilt {
         const val HILT_ANDROID = "2.48"
         const val HILT_ANDROID_COMPILER = "2.48"

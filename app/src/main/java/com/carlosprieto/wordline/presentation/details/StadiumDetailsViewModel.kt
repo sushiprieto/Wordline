@@ -23,12 +23,12 @@ class StadiumDetailsViewModel @Inject constructor(
     val state: State<StadiumDetailsState> = _state
 
     init {
-//        savedStateHandle.get<String>(Constants.PARAM_COIN_ID)?.let { stadiumId ->
-//            getStadiumDetails(stadiumId)
-//        }
+        savedStateHandle.get<String>(Constants.PARAM_STADIUM_ID)?.let {
+            getStadiumDetails()
+        }
     }
 
-    private fun getStadiumDetails(stadiumId: String) {
+    private fun getStadiumDetails() {
         getStadiumListUseCase().onEach { result ->
             when (result) {
                 is Resource.Success -> {

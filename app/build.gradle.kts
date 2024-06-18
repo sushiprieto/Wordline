@@ -98,6 +98,7 @@ dependencies {
 
     google()
     coroutines()
+    room()
     hilt()
     square()
     lottie()

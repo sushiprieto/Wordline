@@ -119,6 +119,16 @@ fun ListComponent(
             StadiumListItem(
                 stadium = stadiumItem,
                 onItemClick = {
+                    val stadiumTitle = stadiumItem.title
+                    val stadiumImage = stadiumItem.image
+                    navController.currentBackStackEntry?.savedStateHandle?.set(
+                        key = "stadiumTitle",
+                        value = stadiumTitle
+                    )
+                    navController.currentBackStackEntry?.savedStateHandle?.set(
+                        key = "stadiumImage",
+                        value = stadiumImage
+                    )
                     navController.navigate(Screen.StadiumDetailsScreen.route + "/${stadiumItem.id}")
                 }
             )

@@ -1,9 +1,9 @@
 package com.carlosprieto.wordline.presentation.details
 
-import com.carlosprieto.wordline.domain.model.StadiumDetails
+import com.carlosprieto.wordline.data.remote.response.StadiumItemResponse
 
 data class StadiumDetailsState(
     val isLoading: Boolean = false,
-    val data: StadiumDetails? = null,
+    val data: StadiumItemResponse? = null,
     val errorMessage: String = ""
 )

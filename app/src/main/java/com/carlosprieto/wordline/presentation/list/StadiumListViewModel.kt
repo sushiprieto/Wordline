@@ -29,6 +29,7 @@ class StadiumListViewModel @Inject constructor(
         mutableStateOf(value = "")
     val searchTextState: State<String> = _searchTextState
 
+
     fun updateSearchWidgetState(newValue: SearchWidgetState) {
         _searchWidgetState.value = newValue
     }
@@ -40,6 +41,12 @@ class StadiumListViewModel @Inject constructor(
     init {
         getStadiums()
     }
+
+    /*fun insertData(model: StadiumItemResponse){
+        GlobalScope.launch {
+            getDatabase().stadiumDao().insertStadium(model)
+        }
+    }*/
 
     private fun getStadiums() {
         getStadiumListUseCase().onEach { result ->

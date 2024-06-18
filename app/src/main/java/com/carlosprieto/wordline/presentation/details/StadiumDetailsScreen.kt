@@ -46,6 +46,8 @@ import com.carlosprieto.wordline.component.StadiumDetailItem
 @Composable
 fun StadiumDetailsScreen(
     navController: NavController,
+    stadiumTitle: String?,
+    stadiumImage: String?,
     viewModel: StadiumDetailsViewModel = hiltViewModel()
 ) {
     val state = viewModel.state.value
@@ -54,9 +56,10 @@ fun StadiumDetailsScreen(
         TopAppBar(
             title =
             {
-                state.data?.let {
-                    Text(text = it.name)
-                }
+//                state.data?.let {
+//                    Text(text = it.name)
+//                }
+                Text(text = stadiumTitle.toString())
             },
             navigationIcon = {
                 IconButton(onClick = { navController.navigateUp() }) {
@@ -72,24 +75,20 @@ fun StadiumDetailsScreen(
                 .fillMaxSize()
                 .background(MaterialTheme.colors.background)
         ) {
-            state.data?.let { stadium ->
+
+            StadiumDetailItem(title = stadiumTitle, image = stadiumImage)
+
+            /*state.data?.let { stadium ->
                 LazyColumn(
                     modifier = Modifier.fillMaxSize(),
                     contentPadding = PaddingValues(20.dp)
                 ) {
                     item {
-                        StadiumDetailItem(
-                            stringResource(R.string.started_at),
-                        )
-                        StadiumDetailItem(
-                            stringResource(R.string.last_data_at),
-                        )
-
                         Spacer(modifier = Modifier.height(15.dp))
 
                         AsyncImage(
                             model = ImageRequest.Builder(LocalContext.current)
-                                .data("https://graphs.coinpaprika.com/currency/chart/${stadium.id}/7d/chart.svg")
+                                .data(stadiumImage)
                                 .decoderFactory(SvgDecoder.Factory())
                                 .build(),
                             contentDescription = null,
@@ -102,7 +101,7 @@ fun StadiumDetailsScreen(
 
                         Spacer(modifier = Modifier.height(15.dp))
 
-                        Card(
+                        *//*Card(
                             backgroundColor = MaterialTheme.colors.surface,
                             modifier = Modifier
                                 .clip(RoundedCornerShape(4.dp))
@@ -114,13 +113,13 @@ fun StadiumDetailsScreen(
                                 modifier = Modifier
                                     .padding(12.dp)
                             )
-                        }
+                        }*//*
 
                         Spacer(modifier = Modifier.height(15.dp))
 
                     }
                 }
-            }
+            }*/
             if (state.errorMessage.isNotBlank()) {
                 Text(
                     text = state.errorMessage,
@@ -132,7 +131,7 @@ fun StadiumDetailsScreen(
                         .align(Alignment.Center)
                 )
             }
-            if (state.isLoading) {
+            /*if (state.isLoading) {
                 Box(
                     contentAlignment = Alignment.Center,
                     modifier = Modifier.fillMaxSize()
@@ -153,7 +152,7 @@ fun StadiumDetailsScreen(
                         modifier = Modifier.padding(all = 30.dp)
                     )
                 }
-            }
+            }*/
         }
     }
 }

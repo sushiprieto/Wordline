@@ -23,6 +23,11 @@ object Dependencies {
     internal const val KOTLIN_COROUTINES_CORE = "org.jetbrains.kotlinx:kotlinx-coroutines-core:${Versions.Coroutines.CORE}"
     internal const val KOTLIN_COROUTINES_ANDROID = "org.jetbrains.kotlinx:kotlinx-coroutines-android:${Versions.Coroutines.ANDROID}"
 
+    // ROOM
+    internal const val ROOM_ANDROID = "androidx.room:room-runtime:${Versions.Room.ROOM}"
+    internal const val ROOM_KTX = "androidx.room:room-ktx:${Versions.Room.ROOM}"
+    internal const val ROOM_COMPILER = "androidx.room:room-compiler:${Versions.Room.ROOM}"
+
     // SQUARE
     internal const val SQUARE_OK_HTTP = "com.squareup.okhttp3:okhttp:${Versions.Square.OK_HTTP}"
     internal const val SQUARE_OK_HTTP_LOGGING_INTERCEPTOR = "com.squareup.okhttp3:logging-interceptor:${Versions.Square.OK_HTTP}"
@@ -70,6 +75,12 @@ fun DependencyHandler.google() {
 fun DependencyHandler.coroutines() {
     implementation(Dependencies.KOTLIN_COROUTINES_CORE)
     implementation(Dependencies.KOTLIN_COROUTINES_ANDROID)
+}
+
+fun DependencyHandler.room() {
+    implementation(Dependencies.ROOM_ANDROID)
+    implementation(Dependencies.ROOM_KTX)
+    kapt(Dependencies.ROOM_COMPILER)
 }
 
 fun DependencyHandler.square() {
